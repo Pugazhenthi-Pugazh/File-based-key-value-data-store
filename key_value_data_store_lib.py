@@ -1,10 +1,18 @@
 import os
 import time 
 import threading
+import pathlib as path
+import json
 
+filepath = "D:\pugazh\File based key value data store\sample.json"
 data = {}
 
+def changefilepath(path):
+    filepath = path
+
 def create(key,value,timeout=0):
+    json_file = open(filepath, "r")
+    data = json.load(json_file)
     if key in data:
         print("Error: This key is already exists")
     else:
@@ -20,6 +28,8 @@ def create(key,value,timeout=0):
                 print("Error: Out of  Memory limit.")
         else:
             print("Error: Key name is invalid, key name must in alphabets and please enter the alphbets only.")
+    outfile = open(filepath, "w")
+    json.dump(data,outfile);
             
 def read(key):
     if key not in data:
@@ -31,7 +41,7 @@ def read(key):
                 string = str(key)+":"+str(key_name[0])
                 return string       
             else:
-                print("Error: This",key,"is expired")
+                print("Error: This key is expired")
         else:
             string =  str(key)+":"+str(key_name[0])
             return string
@@ -50,3 +60,8 @@ def delete(key):
         else:
             del data[key]
             print("Key is deleted successfully")
+            
+
+create("oldkey",30)
+            
+
