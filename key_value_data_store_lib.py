@@ -72,4 +72,3 @@ def delete(key):
     outfile = open(filepath, "w")
     json.dump(data,outfile);
 
-create("pugazh",34)
