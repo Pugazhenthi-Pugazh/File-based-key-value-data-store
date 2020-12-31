@@ -1,4 +1,5 @@
 import os
+import json
 import time 
 import threading
 
@@ -28,12 +29,12 @@ def read(key):
         key_name = data[key]
         if key_name[1]!=0:
             if time.time()<key_name[1]:
-                string = str(key)+":"+str(key_name[0])
+                string = string = json.dumps(data)
                 return string       
             else:
                 print("Error: This key is expired")
         else:
-            string =  str(key)+":"+str(key_name[0])
+            string = string = json.dumps(data)
             return string
                     
 def delete(key):
