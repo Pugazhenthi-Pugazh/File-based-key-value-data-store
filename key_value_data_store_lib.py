@@ -1,4 +1,3 @@
-import os
 import time 
 import threading
 import pathlib as path
@@ -31,6 +30,7 @@ def create(key,value,timeout=0):
             print("Error: Key name is invalid, key name must in alphabets and please enter the alphbets only.")
     outfile = open(filepath, "w")
     json.dump(data,outfile)
+    print("key and value is succesfully created")
             
 def read(key):
     json_file = open(filepath, "r")
@@ -41,14 +41,16 @@ def read(key):
         key_name = data[key]
         if key_name[1]!=0:
             if time.time()<key_name[1]:
-                string = str(key)+":"+list(key_name[0])
-                return string
+                str1 = key
+                str2 = key_name[0]
+                return str(str1)+":"+str(str2)
                 
             else:
                 print("Error: This key is expired")
         else:
-            string = str(key)+":"+str(key_name[0])
-            return string
+            str1 = key
+            str2 = key_name[0]
+            return (str1)+ ":" +str(str2)
                     
 def delete(key):
     
@@ -71,5 +73,4 @@ def delete(key):
             print("Key is deleted successfully")
     outfile = open(filepath, "w")
     json.dump(data,outfile);
-
-create("pugazh",34)
+    
