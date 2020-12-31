@@ -73,4 +73,8 @@ def delete(key):
             print("Key is deleted successfully")
     outfile = open(filepath, "w")
     json.dump(data,outfile);
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 89c749c1394b5d10cd0a5b9881607f8d32cd9c43
